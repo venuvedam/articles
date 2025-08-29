@@ -1,0 +1,15 @@
+# Jekyll build artifacts
+_site/
+.jekyll-cache/
+
+# Bundler
+vendor/
+.bundle/
+
+# Local development files
+.sass-cache/
+*.gem
+.DS_Store
+
+# Gemfile.lock (uncomment if you want to commit it)
+# Gemfile.lock
