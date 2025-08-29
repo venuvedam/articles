@@ -1,0 +1,61 @@
+{
+  "roleName": "MCP Azure SRE Operator",
+  "description": "Custom role for MCP Azure SRE server operations with minimal required permissions",
+  "type": "CustomRole",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Resources/subscriptions/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Resources/subscriptions/resourceGroups/resources/read",
+        "Microsoft.Compute/virtualMachines/read",
+        "Microsoft.Compute/virtualMachines/instanceView/read",
+        "Microsoft.Compute/virtualMachines/restart/action",
+        "Microsoft.Compute/virtualMachines/start/action",
+        "Microsoft.Compute/virtualMachines/powerOff/action",
+        "Microsoft.Web/sites/read",
+        "Microsoft.Web/sites/config/read",
+        "Microsoft.Web/sites/restart/action",
+        "Microsoft.Web/sites/start/action",
+        "Microsoft.Web/sites/stop/action",
+        "Microsoft.Web/serverfarms/read",
+        "Microsoft.Web/serverfarms/write",
+        "Microsoft.Storage/storageAccounts/read",
+        "Microsoft.Storage/storageAccounts/listKeys/action",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/read",
+        "Microsoft.Insights/metrics/read",
+        "Microsoft.Insights/metricDefinitions/read",
+        "Microsoft.Insights/alertRules/read",
+        "Microsoft.Insights/alertRules/write",
+        "Microsoft.Insights/components/read",
+        "Microsoft.Insights/components/query/action",
+        "Microsoft.OperationalInsights/workspaces/read",
+        "Microsoft.OperationalInsights/workspaces/query/action",
+        "Microsoft.OperationalInsights/workspaces/search/action",
+        "Microsoft.Monitor/actionGroups/read",
+        "Microsoft.ResourceHealth/availabilityStatuses/read",
+        "Microsoft.Security/assessments/read",
+        "Microsoft.Authorization/roleAssignments/read"
+      ],
+      "notActions": [
+        "Microsoft.Resources/subscriptions/resourceGroups/delete",
+        "Microsoft.Compute/virtualMachines/delete",
+        "Microsoft.Web/sites/delete",
+        "Microsoft.Storage/storageAccounts/delete",
+        "Microsoft.Authorization/roleAssignments/write",
+        "Microsoft.Authorization/roleAssignments/delete"
+      ],
+      "dataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+        "Microsoft.KeyVault/vaults/secrets/getSecret/action"
+      ],
+      "notDataActions": [
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write",
+        "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete"
+      ]
+    }
+  ],
+  "assignableScopes": [
+    "/subscriptions/{subscription-id}"
+  ]
+}

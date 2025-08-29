@@ -1,0 +1,34 @@
+{
+  "mcp.servers": [
+    {
+      "name": "Azure SRE Server",
+      "description": "MCP server for Azure SRE operations",
+      "command": "node",
+      "args": ["/path/to/azure-sre-mcp-server/dist/index.js"],
+      "cwd": "/path/to/azure-sre-mcp-server",
+      "env": {
+        "AZURE_SUBSCRIPTION_ID": "your-subscription-id",
+        "AZURE_TENANT_ID": "your-tenant-id",
+        "AZURE_CLIENT_ID": "your-client-id",
+        "LOG_ANALYTICS_WORKSPACE_ID": "your-workspace-id",
+        "MCP_SERVER_PORT": "3000",
+        "MCP_LOG_LEVEL": "info"
+      },
+      "timeout": 30000,
+      "retries": 3
+    }
+  ],
+  "mcp.client": {
+    "timeout": 30000,
+    "enableLogging": true,
+    "logLevel": "info",
+    "autoReconnect": true,
+    "reconnectInterval": 5000
+  },
+  "mcp.ui": {
+    "showNotifications": true,
+    "enableCodeCompletion": true,
+    "enableHover": true,
+    "enableDiagnostics": true
+  }
+}

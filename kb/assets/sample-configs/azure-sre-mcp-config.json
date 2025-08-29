@@ -1,0 +1,82 @@
+{
+  "server": {
+    "name": "azure-sre-mcp-server",
+    "version": "1.0.0",
+    "port": 3000,
+    "host": "0.0.0.0",
+    "protocol": "http"
+  },
+  "azure": {
+    "subscriptionId": "${AZURE_SUBSCRIPTION_ID}",
+    "tenantId": "${AZURE_TENANT_ID}",
+    "authentication": {
+      "type": "managedIdentity",
+      "clientId": "${AZURE_CLIENT_ID}",
+      "clientSecret": "${AZURE_CLIENT_SECRET}",
+      "certificatePath": "${AZURE_CERTIFICATE_PATH}",
+      "useChainedCredential": true
+    },
+    "resourceGroups": [
+      "production-rg",
+      "staging-rg",
+      "development-rg"
+    ],
+    "allowedRegions": [
+      "eastus",
+      "westus2",
+      "centralus"
+    ]
+  },
+  "monitoring": {
+    "logAnalyticsWorkspaceId": "${LOG_ANALYTICS_WORKSPACE_ID}",
+    "applicationInsightsConnectionString": "${APPINSIGHTS_CONNECTION_STRING}",
+    "enableMetrics": true,
+    "metricsInterval": 60,
+    "retentionDays": 30
+  },
+  "security": {
+    "enableAuditLogging": true,
+    "auditLogLevel": "info",
+    "maxRequestsPerMinute": 100,
+    "maxConcurrentRequests": 10,
+    "allowedClients": ["*"],
+    "requireHttps": false,
+    "corsEnabled": false,
+    "apiKeyRequired": false
+  },
+  "features": {
+    "resourceManagement": {
+      "enabled": true,
+      "allowCreate": false,
+      "allowDelete": false,
+      "allowModify": true
+    },
+    "monitoring": {
+      "enabled": true,
+      "realTimeMetrics": true,
+      "historicalData": true,
+      "alerting": true
+    },
+    "automation": {
+      "enabled": true,
+      "allowScaling": true,
+      "allowRestart": true,
+      "allowRunbooks": true
+    }
+  },
+  "logging": {
+    "level": "info",
+    "format": "json",
+    "destination": "console",
+    "enableFileLogging": false,
+    "logFilePath": "/var/log/mcp-azure-sre.log",
+    "maxLogFiles": 5,
+    "maxLogSize": "10MB"
+  },
+  "cache": {
+    "enabled": true,
+    "ttl": 300,
+    "maxItems": 1000,
+    "redisUrl": "${REDIS_URL}"
+  }
+}
